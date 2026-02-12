@@ -1,23 +1,30 @@
-# Stats_Lab_1
-Prob and Stats Lab
+# Descriptive Statistics Lab (Autograded)
 
-# Descriptive Statistics Lab
+## What students implement
+Edit `stats_lab.py` and implement:
 
-Students must implement the following functions in `stats_lab.py`:
+### Q1 — Generate & plot histograms (10 bins) and return the sample
+- `normal_histogram(n)` must sample **Normal(0,1)**
+- `uniform_histogram(n)` must sample **Uniform(0,10)**
+- `bernoulli_histogram(n)` must sample **Bernoulli(0.5)**
 
-- plot_histogram
-- sample_mean
-- sample_variance
-- order_statistics
-- sample_covariance
-- covariance_matrix
+Each function must:
+- generate `n` samples using NumPy
+- plot a histogram with **10 bins**
+- label axes and add a title
+- call `plt.show()`
+- **return** the generated data (as list or NumPy array)
 
-## Run Locally
+### Q2 — Sample mean & variance
+- `sample_mean(data)`
+- `sample_variance(data)` must use **n-1** in denominator
 
-Install dependencies:
+### Q3 — Order statistics
+Return `(min, max, median, q1, q3)`.
+For the dataset `[5,1,3,2,4]`, the autograder expects **Q1=2** and **Q3=4**.
 
-    pip install numpy matplotlib pytest
+### Q4 — Sample covariance
+Use **n-1** in denominator.
 
-Run tests:
-
-    pytest
+### Q5 — Covariance matrix
+Return a 2×2 matrix:
