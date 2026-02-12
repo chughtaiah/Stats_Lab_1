@@ -20,14 +20,14 @@ def plot_histogram(data):
 
 def sample_mean(data):
     """
-    Compute sample mean.
+    Compute and return sample mean.
     """
     pass
 
 
 def sample_variance(data):
     """
-    Compute sample variance using n-1 in denominator. This makes the estimator unbiased. 
+    Compute and return sample variance using n-1 in denominator. This makes the estimator unbiased. 
     """
     pass
 
@@ -54,7 +54,7 @@ def order_statistics(data):
 
 def sample_covariance(x, y):
     """
-    Compute sample covariance using n-1 denominator.
+    Compute and return sample covariance using n-1 denominator.
     """
     pass
 
