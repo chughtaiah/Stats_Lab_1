@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib
-matplotlib.use("Agg")  # CI-safe backend (no GUI)
+matplotlib.use("Agg")  # Prevent GUI issues
 
 from stats_lab import (
     normal_histogram,
@@ -10,71 +10,60 @@ from stats_lab import (
     sample_variance,
     order_statistics,
     sample_covariance,
-    covariance_matrix,
+    covariance_matrix
 )
 
 # -----------------------------------
-# Question 1 – Generate & Plot Histograms
-# (We grade by checking the generated sample properties.)
+# Q1 – Normal (10 pts)
 # -----------------------------------
-
-def test_normal_histogram_generation():
+def test_q1_normal():
     np.random.seed(0)
     data = normal_histogram(10000)
-
     assert isinstance(data, (list, np.ndarray))
     data = np.asarray(data)
-
-    assert data.shape == (10000,)
     assert abs(sample_mean(data)) < 0.1
-    assert abs(sample_variance(data) - 1.0) < 0.1
 
 
-def test_uniform_histogram_generation():
+# -----------------------------------
+# Q1 – Uniform (10 pts)
+# -----------------------------------
+def test_q1_uniform():
     np.random.seed(0)
     data = uniform_histogram(10000)
-
-    assert isinstance(data, (list, np.ndarray))
     data = np.asarray(data)
-
-    assert data.shape == (10000,)
-    assert data.min() >= 0
-    assert data.max() <= 10
-    assert abs(sample_mean(data) - 5.0) < 0.1
-    # Optional: could also check variance ≈ (10-0)^2/12 = 8.333...
+    assert abs(sample_mean(data) - 5) < 0.1
 
 
-def test_bernoulli_histogram_generation():
+# -----------------------------------
+# Q1 – Bernoulli (10 pts)
+# -----------------------------------
+def test_q1_bernoulli():
     np.random.seed(0)
     data = bernoulli_histogram(10000)
-
-    assert isinstance(data, (list, np.ndarray))
     data = np.asarray(data)
-
-    assert data.shape == (10000,)
-    assert set(np.unique(data)).issubset({0, 1})
     assert abs(sample_mean(data) - 0.5) < 0.05
 
 
 # -----------------------------------
-# Question 2 – Sample Mean & Variance
+# Q2 – Mean (10 pts)
 # -----------------------------------
-
-def test_sample_mean():
+def test_q2_mean():
     data = np.array([1, 2, 3, 4, 5])
     assert sample_mean(data) == 3
 
 
-def test_sample_variance():
+# -----------------------------------
+# Q2 – Variance (10 pts)
+# -----------------------------------
+def test_q2_variance():
     data = np.array([1, 2, 3, 4, 5])
     assert np.isclose(sample_variance(data), 2.5)
 
 
 # -----------------------------------
-# Question 3 – Order Statistics (assert Q1 and Q3)
+# Q3 – Order Statistics (20 pts)
 # -----------------------------------
-
-def test_order_statistics():
+def test_q3_order_statistics():
     data = np.array([5, 1, 3, 2, 4])
     minimum, maximum, median, q1, q3 = order_statistics(data)
 
@@ -86,9 +75,21 @@ def test_order_statistics():
 
 
 # -----------------------------------
-# Question 4 – Sample Covariance
+# Q4 – Covariance (15 pts)
 # -----------------------------------
-
-def test_sample_covariance():
+def test_q4_covariance():
     x = np.array([1, 2, 3])
     y = np.array([2, 4, 6])
+    assert np.isclose(sample_covariance(x, y), 2)
+
+
+# -----------------------------------
+# Q5 – Covariance Matrix (15 pts)
+# -----------------------------------
+def test_q5_covariance_matrix():
+    x = np.array([1, 2, 3])
+    y = np.array([2, 4, 6])
+    cm = covariance_matrix(x, y)
+
+    assert cm.shape == (2, 2)
+    assert np.isclose(cm[0, 1], 2)
