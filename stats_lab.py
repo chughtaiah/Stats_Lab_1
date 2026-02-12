@@ -3,13 +3,32 @@ import matplotlib.pyplot as plt
 
 
 # -----------------------------------
-# Question 1 – Histogram
+# Question 1 – Generate & Plot Histograms (and return data)
 # -----------------------------------
 
-def plot_histogram(data):
+def normal_histogram(n):
     """
-    Plot histogram with 10 bins.
-    Label axes and add title.
+    Generate n samples from Normal(0,1),
+    plot a histogram with 10 bins (with labels + title),
+    and return the generated data.
+    """
+    pass
+
+
+def uniform_histogram(n):
+    """
+    Generate n samples from Uniform(0,10),
+    plot a histogram with 10 bins (with labels + title),
+    and return the generated data.
+    """
+    pass
+
+
+def bernoulli_histogram(n):
+    """
+    Generate n samples from Bernoulli(0.5),
+    plot a histogram with 10 bins (with labels + title),
+    and return the generated data.
     """
     pass
 
@@ -20,14 +39,14 @@ def plot_histogram(data):
 
 def sample_mean(data):
     """
-    Compute and return sample mean.
+    Compute sample mean.
     """
     pass
 
 
 def sample_variance(data):
     """
-    Compute and return sample variance using n-1 in denominator. This makes the estimator unbiased. 
+    Compute sample variance using n-1 denominator.
     """
     pass
 
@@ -42,8 +61,11 @@ def order_statistics(data):
     - min
     - max
     - median
-    - 25th percentile
-    - 75th percentile
+    - 25th percentile (Q1)
+    - 75th percentile (Q3)
+
+    Use a consistent quartile definition. The tests for the fixed
+    dataset [5,1,3,2,4] expect Q1=2 and Q3=4.
     """
     pass
 
@@ -54,7 +76,7 @@ def order_statistics(data):
 
 def sample_covariance(x, y):
     """
-    Compute and return sample covariance using n-1 denominator.
+    Compute sample covariance using n-1 denominator.
     """
     pass
 
@@ -65,7 +87,8 @@ def sample_covariance(x, y):
 
 def covariance_matrix(x, y):
     """
-    Return 2x2 covariance matrix.
+    Return 2x2 covariance matrix:
+        [[var(x), cov(x,y)],
+         [cov(x,y), var(y)]]
     """
     pass
-
